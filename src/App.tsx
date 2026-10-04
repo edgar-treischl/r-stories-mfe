@@ -210,7 +210,7 @@ function AppContent() {
 
 function App() {
   return (
-    <BrowserRouter basename="/r-stories-mfe/">
+    <BrowserRouter>
       <ScrollToTop />
       <AppContent />
     </BrowserRouter>
