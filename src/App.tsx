@@ -186,7 +186,7 @@ function AppContent() {
           <img
             src={variant.image}
             alt={variant.title}
-            className={variant.image.endsWith('.svg') ? 'preview-svg' : 'preview-raster'}
+            className={variant.image.startsWith('data:image/svg+xml') ? 'preview-svg' : 'preview-raster'}
           />
         </section>
 

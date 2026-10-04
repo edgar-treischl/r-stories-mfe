@@ -8,12 +8,14 @@ const markdownModules = import.meta.glob("./**/story.md", {
   import: "default",
 }) as Record<string, string>
 
-// Load all story images eagerly as URLs. Vite can only statically resolve
-// `new URL(..., import.meta.url)` for string literals, so a glob map is
-// required to look up images by their dynamic relative path.
+// Load all story images eagerly as inlined base64 data URIs. Using `?inline`
+// embeds each image directly into the JS bundle, so the reference stays valid
+// both locally and when this app is consumed remotely via Module Federation
+// (an emitted asset URL would otherwise resolve against the host app's base
+// path instead of this remote's).
 const imageModules = import.meta.glob(
   "./**/*.{png,jpg,jpeg,gif,svg}",
-  { eager: true, query: "?url", import: "default" },
+  { eager: true, query: "?inline", import: "default" },
 ) as Record<string, string>
 
 // Load all R code files as raw text for easy inclusion in stories
