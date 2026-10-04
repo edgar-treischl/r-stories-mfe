@@ -1,0 +1,119 @@
+:root {
+  /* MFE-specific tokens - scoped to avoid conflicts */
+  --mfe-template-text: #6b6375;
+  --mfe-template-text-muted: #9ca3af;
+  --mfe-template-heading: #08060d;
+  --mfe-template-surface: #fff;
+  --mfe-template-elevated: #fafafa;
+  --mfe-template-bg: #fff;
+  --mfe-template-border: #e5e4e7;
+  --mfe-template-code-bg: #f4f3ec;
+  --mfe-template-accent: #aa3bff;
+  --mfe-template-accent-soft: rgba(170, 59, 255, 0.1);
+  --mfe-template-accent-border: rgba(170, 59, 255, 0.5);
+  --mfe-template-social-bg: rgba(244, 243, 236, 0.5);
+  --mfe-template-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  --mfe-template-sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mfe-template-heading-font: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mfe-template-mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/145% var(--mfe-template-sans);
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  color: var(--mfe-template-text);
+  background: var(--mfe-template-bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --mfe-template-text: #9ca3af;
+    --mfe-template-text-muted: #6b7280;
+    --mfe-template-heading: #f3f4f6;
+    --mfe-template-surface: #1c1d24;
+    --mfe-template-elevated: #24252c;
+    --mfe-template-bg: #16171d;
+    --mfe-template-border: #2e303a;
+    --mfe-template-code-bg: #1f2028;
+    --mfe-template-accent: #c084fc;
+    --mfe-template-accent-soft: rgba(192, 132, 252, 0.15);
+    --mfe-template-accent-border: rgba(192, 132, 252, 0.5);
+    --mfe-template-social-bg: rgba(47, 48, 58, 0.5);
+    --mfe-template-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.25);
+  }
+
+  .mfe-template #social .button-icon {
+    filter: invert(1) brightness(2);
+  }
+}
+
+body {
+  margin: 0;
+}
+
+/* MFE root container - scoped to prevent style leakage */
+.mfe-template {
+  width: 1126px;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  border-inline: 1px solid var(--mfe-template-border);
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.mfe-template * {
+  box-sizing: border-box;
+}
+
+.mfe-template h1,
+.mfe-template h2 {
+  font-family: var(--mfe-template-heading-font);
+  font-weight: 500;
+  color: var(--mfe-template-heading);
+}
+
+.mfe-template h1 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  letter-spacing: -0.03em;
+  margin: 32px 0;
+  line-height: 1.1;
+  
+  @media (max-width: 1024px) {
+    margin: 20px 0;
+  }
+}
+
+.mfe-template h2 {
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin: 0 0 8px;
+}
+
+.mfe-template p {
+  margin: 0;
+  color: var(--mfe-template-text);
+}
+
+.mfe-template code {
+  font-family: var(--mfe-template-mono);
+  display: inline-flex;
+  border-radius: 6px;
+  color: var(--mfe-template-heading);
+  font-size: 0.9em;
+  line-height: 1.4;
+  padding: 4px 8px;
+  background: var(--mfe-template-code-bg);
+  border: 1px solid var(--mfe-template-border);
+}
