@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react"
-import { useLocation, useNavigate } from "react-router-dom"
+import { useLocation, useNavigate, BrowserRouter } from "react-router-dom"
 import { stories } from "./stories"
 import { highlightCode } from "./highlight"
 import { parseInlineMarkdown } from "./utils/parseMarkdown"
 import { LandingPage } from "./components/LandingPage"
+import ScrollToTop from "./components/ScrollToTop"
 
-function App() {
+function AppContent() {
   const [highlightedCode, setHighlightedCode] = useState("")
   const location = useLocation()
   const navigate = useNavigate()
@@ -204,6 +205,15 @@ function App() {
         </section>
       </main>
     </div>
+  )
+}
+
+function App() {
+  return (
+    <BrowserRouter basename="/r-stories-mfe/">
+      <ScrollToTop />
+      <AppContent />
+    </BrowserRouter>
   )
 }
 
